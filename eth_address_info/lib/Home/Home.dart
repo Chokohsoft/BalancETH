@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'ChartCard.dart';
+import '../Constants.dart';
+
 /// This is the stateful widget that the main application instantiates.
 class Home extends StatefulWidget {
   final String title;
@@ -15,28 +18,37 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Widget addressBrowser = Stack(
     alignment: Alignment.centerRight,
-    children: <Widget>[
+    children: [
       TextField(
         decoration: InputDecoration(
-          fillColor: Color(0xFF353B48),
+          fillColor: Constants.secondaryColor,
           hintText: 'Address',
-          hintStyle: TextStyle(fontSize: 18, color: Colors.white),
+          hintStyle: Constants.browserHintStyle,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(48),
-            borderSide: BorderSide(width: 0, style: BorderStyle.none),
+            borderSide: BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
           ),
           filled: true,
           contentPadding: const EdgeInsets.fromLTRB(28, 12, 48, 12),
         ),
-        style: TextStyle(fontSize: 18, color: Colors.white),
+        style: Constants.browserTextStyle,
       ),
-      Material(
-        color: Colors.transparent,
-        child: IconButton(
-          icon: Image.asset('assets/icons/update_address_browser.png'),
-          onPressed: () => print('suffix Icon Pressed'),
-          iconSize: 48,
-          padding: EdgeInsets.all(0),
+      MaterialButton(
+        color: Color(0xFF01A3A4),
+        shape: CircleBorder(),
+        onPressed: () {},
+        height: 48,
+        minWidth: 48,
+        padding: EdgeInsets.all(0),
+        child: RotatedBox(
+          quarterTurns: 1,
+          child: Icon(
+            Icons.sync,
+            color: Colors.white,
+          ),
         ),
       ),
     ],
@@ -49,13 +61,18 @@ class _HomeState extends State<Home> {
           widget.title,
           style: TextStyle(fontSize: 28),
         ),
-        backgroundColor: Color(0xFF2F3640),
+        backgroundColor: Constants.primaryColor,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFF2F3640),
+      backgroundColor: Constants.primaryColor,
       body: SafeArea(
         child: Container(
-          child: ListView(children: <Widget>[this.addressBrowser]),
+          child: ListView(
+            children: [
+              this.addressBrowser,
+              Holdings(),
+            ],
+          ),
         ),
         top: true,
         bottom: true,

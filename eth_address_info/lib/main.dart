@@ -1,6 +1,8 @@
 import 'package:eth_address_info/Home/Home.dart';
 import 'package:flutter/material.dart';
 
+import 'Constants.dart';
+
 void main() {
   runApp(App());
 }
@@ -28,14 +30,7 @@ class App extends StatelessWidget {
 
           // Define the default font family.
           fontFamily: 'SegoeUI',
-
-          // Define the default TextTheme. Use this to specify the default
-          // text styling for headlines, titles, bodies of text, and more.
-          textTheme: TextTheme(
-            headline1: TextStyle(fontSize: 28),
-            // headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-            // bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
-          ),
+          cardColor: Constants.cardColor,
         ),
         home: Home(title: _title),
       ),
