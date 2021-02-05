@@ -30,7 +30,6 @@ class App extends StatelessWidget {
 
           // Define the default font family.
           fontFamily: 'SegoeUI',
-          cardColor: Constants.cardColor,
         ),
         home: Home(title: _title),
       ),

@@ -67,10 +67,19 @@ class _HomeState extends State<Home> {
       backgroundColor: Constants.primaryColor,
       body: SafeArea(
         child: Container(
-          child: ListView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               this.addressBrowser,
-              Holdings(),
+              ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: [
+                  Balance(),
+                  Holdings(),
+                ],
+              ),
             ],
           ),
         ),
