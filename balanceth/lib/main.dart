@@ -1,5 +1,7 @@
-import 'package:balanceth/Home/Home.dart';
+import 'package:balanceth/Home/home.dart';
+import 'package:balanceth/providers/ethplorer_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(App());
@@ -10,21 +12,24 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus &&
-            currentFocus.focusedChild != null) {
-          FocusManager.instance.primaryFocus.unfocus();
-        }
-      },
-      child: MaterialApp(
-        title: _title,
-        theme: ThemeData(
-          // Define the default font family.
-          fontFamily: 'SegoeUI',
+    return ChangeNotifierProvider(
+      create: (context) => EthplorerProvider(),
+      child: GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
+        },
+        child: MaterialApp(
+          title: _title,
+          theme: ThemeData(
+            // Define the default font family.
+            fontFamily: 'SegoeUI',
+          ),
+          home: Home(title: _title),
         ),
-        home: Home(title: _title),
       ),
     );
   }

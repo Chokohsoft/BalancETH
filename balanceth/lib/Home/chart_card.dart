@@ -1,20 +1,17 @@
+import 'package:balanceth/providers/ethplorer_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:balanceth/constants.dart';
+import 'package:provider/provider.dart';
 
-import '../Constants.dart';
-
-class Balance extends StatefulWidget {
+class Balance extends StatelessWidget {
   final String title;
 
   Balance({Key key, this.title}) : super(key: key);
 
-  @override
-  _BalanceState createState() => _BalanceState();
-}
-
-class _BalanceState extends State<Balance> {
   Widget build(BuildContext context) {
+    // var ethProvider = Provider.of<EthplorerProvider>(context);
     return Card(
       color: Constants.secondaryColor,
       elevation: 2,
@@ -182,17 +179,13 @@ class _BalanceState extends State<Balance> {
   }
 }
 
-class Holdings extends StatefulWidget {
+class Holdings extends StatelessWidget {
   final String title;
 
   Holdings({Key key, this.title}) : super(key: key);
 
-  @override
-  _HoldingsState createState() => _HoldingsState();
-}
-
-class _HoldingsState extends State<Holdings> {
   Widget build(BuildContext context) {
+    // var ethProvider = Provider.of<EthplorerProvider>(context);
     return Card(
       color: Constants.secondaryColor,
       elevation: 2,
@@ -240,7 +233,12 @@ class _HoldingsState extends State<Holdings> {
                 ),
               ],
             ),
-            //
+            // Token list
+            Row(
+              children: [
+                // ListView.builder(),
+              ],
+            ),
           ],
         ),
       ),
